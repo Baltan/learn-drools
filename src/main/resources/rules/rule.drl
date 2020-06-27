@@ -94,3 +94,30 @@ when
 then
     System.out.println("***********" + 3 + "***********");
 end
+
+rule "rule12"
+activation-group "group2"
+salience 1000
+when
+    $l : Lover(false);
+then
+    System.out.println("***********" + 1 + "***********");
+end
+
+rule "rule13"
+activation-group "group2"
+salience 888
+when
+    $l : Lover();
+then
+    System.out.println("***********" + 2 + "***********");
+end
+
+rule "rule14"
+activation-group "group2"
+salience 999
+when
+    $l : Lover();
+then
+    System.out.println("***********" + 3 + "***********");
+end
