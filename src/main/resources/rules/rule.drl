@@ -102,7 +102,7 @@ rule "rule12"
 activation-group "group2"
 salience 1000
 when
-    $l : Lover(false);
+    $l : Lover(name == "B");
 then
     System.out.println("***********group2-1***********");
 end
@@ -111,7 +111,7 @@ rule "rule13"
 activation-group "group2"
 salience 888
 when
-    $l : Lover();
+    $l : Lover(name == "A");
 then
     System.out.println("***********group2-2***********");
 end
@@ -120,7 +120,7 @@ rule "rule14"
 activation-group "group2"
 salience 999
 when
-    $l : Lover();
+    $l : Lover(name == "A");
 then
     System.out.println("***********group2-3***********");
 end
@@ -130,7 +130,7 @@ end
 rule "rule15"
 agenda-group "group3"
 when
-    $l : Lover();
+    $l : Lover(name == "C");
 then
     System.out.println("***********" + $l + "***********");
 end
@@ -138,7 +138,7 @@ end
 rule "rule16"
 agenda-group "group3"
 when
-    $l : Lover();
+    $l : Lover(name == "C");
 then
     System.out.println("***********" + $l + "***********");
 end

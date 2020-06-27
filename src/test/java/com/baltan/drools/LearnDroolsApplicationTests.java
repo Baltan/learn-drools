@@ -32,23 +32,35 @@ class LearnDroolsApplicationTests {
         session = kieTemplate.getKieSession("rule.drl");
     }
 
+    /**
+     * rule1
+     */
     @Test
     public void test1() {
         obj = 0d;
     }
 
+    /**
+     * rule2
+     */
     @Test
     public void test2() {
         User user = new User("Baltan", 30, null, null);
         obj = user;
     }
 
+    /**
+     * rule3
+     */
     @Test
     public void test3() {
         User user = new User("Baltan", 29, Arrays.asList("football", "sleeping", "wandering"), null);
         obj = user;
     }
 
+    /**
+     * rule4
+     */
     @Test
     public void test4() {
         Map<String, Object> tags = new HashMap<>();
@@ -60,52 +72,76 @@ class LearnDroolsApplicationTests {
         obj = user;
     }
 
+    /**
+     * rule5
+     */
     @Test
     public void test5() {
         User user = new User("Baltan", 28, Arrays.asList("football", "wandering", "sleeping"), null);
         obj = user;
     }
 
+    /**
+     * rule6
+     */
     @Test
     public void test6() {
         User user = new User("Baltan", 28, Arrays.asList("table tennis", "wandering", "sleeping"), null);
         obj = user;
     }
 
+    /**
+     * rule7
+     */
     @Test
     public void test7() {
         User user = new User("Zhang San", 30, null, null);
         obj = user;
     }
 
+    /**
+     * rule8
+     */
     @Test
     public void test8() {
         User user = new User("Baltan", 28, Arrays.asList("coding", "wandering", "sleeping"), null);
         obj = user;
     }
 
+    /**
+     * rule9、rule10、rule11
+     */
     @Test
     public void test9() {
         Lover lover = new Lover();
         obj = lover;
     }
 
+    /**
+     * rule12、rule13、rule14
+     */
     @Test
     public void test10() {
-        session.getAgenda().getAgendaGroup("group3").setFocus();
-        Lover lover = new Lover();
+        Lover lover = new Lover("A");
         obj = lover;
     }
 
+    /**
+     * rule15、rule16
+     */
     @Test
     public void test11() {
-        Loser loser = new Loser("A");
-        obj = loser;
+        session.getAgenda().getAgendaGroup("group3").setFocus();
+        Lover lover = new Lover("C");
+        obj = lover;
     }
 
+    /**
+     * rule17
+     */
     @Test
     public void test12() {
-        Loser loser = new Loser("B");
+        Loser loser = new Loser("A");
         obj = loser;
     }
 
