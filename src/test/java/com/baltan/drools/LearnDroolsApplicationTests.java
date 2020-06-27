@@ -1,5 +1,6 @@
 package com.baltan.drools;
 
+import com.baltan.drools.pojo.Context;
 import com.baltan.drools.pojo.Loser;
 import com.baltan.drools.pojo.Lover;
 import com.baltan.drools.pojo.User;
@@ -179,6 +180,15 @@ class LearnDroolsApplicationTests {
     public void test16() {
         Loser loser = new Loser("F");
         obj = loser;
+    }
+
+    /**
+     * rule24
+     */
+    @Test
+    public void test17() {
+        Context context = new Context();
+        obj = context;
     }
 
     @AfterEach

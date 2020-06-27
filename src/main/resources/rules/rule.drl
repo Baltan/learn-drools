@@ -4,6 +4,8 @@ dialect "java"
 import com.baltan.drools.pojo.User
 import com.baltan.drools.pojo.Lover
 import com.baltan.drools.pojo.Loser
+import com.baltan.drools.pojo.Context
+import org.kie.api.runtime.KieRuntime
 
 rule "rule1"
 when
@@ -205,4 +207,12 @@ when
     $l : Loser(name == "F");
 then
     System.out.println("***********loser-2***********");
+end
+
+rule "rule24"
+when
+    $c : Context();
+then
+    KieRuntime kr =  kcontext.getKieRuntime();
+    System.out.println("***********" + kr + "***********");
 end
