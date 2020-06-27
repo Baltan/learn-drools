@@ -95,6 +95,7 @@ then
     System.out.println("***********" + 3 + "***********");
 end
 
+// salience定义同一组别中规则的优先级，优先级最高的那条被满足的规则被执行
 rule "rule12"
 activation-group "group2"
 salience 1000
@@ -120,4 +121,14 @@ when
     $l : Lover();
 then
     System.out.println("***********" + 3 + "***********");
+end
+
+// agenda-group组别中的规则需要被显式激活才会被判断
+// session.getAgenda().getAgendaGroup("group3").setFocus();
+rule "rule15"
+agenda-group "group3"
+when
+    $l : Lover();
+then
+    System.out.println("***********" + $l + "***********");
 end

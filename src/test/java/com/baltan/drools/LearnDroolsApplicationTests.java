@@ -89,6 +89,13 @@ class LearnDroolsApplicationTests {
         obj = lover;
     }
 
+    @Test
+    public void test10() {
+        session.getAgenda().getAgendaGroup("group3").setFocus();
+        Lover lover = new Lover();
+        obj = lover;
+    }
+
     @AfterEach
     public void after() {
         session.insert(obj);
