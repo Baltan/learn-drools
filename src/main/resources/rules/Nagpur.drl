@@ -1,0 +1,23 @@
+package rules
+dialect "java"
+
+import com.baltan.drools.pojo.ItemCity;
+import com.baltan.drools.constant.City;
+import com.baltan.drools.constant.Type;
+import java.math.BigDecimal;
+
+rule "Nagpur Medicine Item"
+when
+    item : ItemCity(purchaseCity == City.NAGPUR && typeofItem == Type.MEDICINES)
+then
+    BigDecimal tax = new BigDecimal(0.0);
+    item.setLocalTax(tax.multiply(item.getSellPrice()));
+end
+
+rule "Nagpur Groceries Item"
+when
+    item : ItemCity(purchaseCity == City.NAGPUR && typeofItem == Type.GROCERIES)
+then
+    BigDecimal tax = new BigDecimal(1.0);
+    item.setLocalTax(tax.multiply(item.getSellPrice()));
+end
