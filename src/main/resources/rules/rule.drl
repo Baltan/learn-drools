@@ -70,13 +70,13 @@ then
     System.out.println("***********" + $u + "***********");
 end
 
-// activation-group定义组别，同一组别中默认排在最前面的那条被满足的规则被执行
+// activation-group定义组别（互斥分组），同一组别中默认排在最前面的那条被满足的规则被执行
 rule "rule9"
 activation-group "group1"
 when
     $l : Lover(false);
 then
-    System.out.println("***********" + 1 + "***********");
+    System.out.println("***********group1-1***********");
 end
 
 rule "rule10"
@@ -84,7 +84,7 @@ activation-group "group1"
 when
     $l : Lover();
 then
-    System.out.println("***********" + 2 + "***********");
+    System.out.println("***********group1-2***********");
 end
 
 rule "rule11"
@@ -92,17 +92,18 @@ activation-group "group1"
 when
     $l : Lover();
 then
-    System.out.println("***********" + 3 + "***********");
+    System.out.println("***********group1-3***********");
 end
 
-// salience定义同一组别中规则的优先级，优先级最高的那条被满足的规则被执行
+// salience定义同一组别中规则的优先级，优先级最高的那条被满足的规则被执行，配置了salience属性的组别优先级高于未配置
+// salience的组别
 rule "rule12"
 activation-group "group2"
 salience 1000
 when
     $l : Lover(false);
 then
-    System.out.println("***********" + 1 + "***********");
+    System.out.println("***********group2-1***********");
 end
 
 rule "rule13"
@@ -111,7 +112,7 @@ salience 888
 when
     $l : Lover();
 then
-    System.out.println("***********" + 2 + "***********");
+    System.out.println("***********group2-2***********");
 end
 
 rule "rule14"
@@ -120,10 +121,10 @@ salience 999
 when
     $l : Lover();
 then
-    System.out.println("***********" + 3 + "***********");
+    System.out.println("***********group2-3***********");
 end
 
-// agenda-group组别中的规则需要被显式激活才会被判断，并且组别中所有被满足的规则都会被执行
+// agenda-group组别（同步分组）中的规则需要被显式激活才会被判断，并且组别中所有被满足的规则都会被执行
 // session.getAgenda().getAgendaGroup("group3").setFocus();
 rule "rule15"
 agenda-group "group3"
