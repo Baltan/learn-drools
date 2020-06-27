@@ -1,5 +1,6 @@
 package com.baltan.drools;
 
+import com.baltan.drools.pojo.Lover;
 import com.baltan.drools.pojo.User;
 import com.drools.core.KieTemplate;
 import org.junit.jupiter.api.AfterEach;
@@ -86,5 +87,6 @@ class LearnDroolsApplicationTests {
     public void after() {
         session.insert(obj);
         session.fireAllRules();
+        session.dispose();
     }
 }
