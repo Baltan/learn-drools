@@ -1,10 +1,70 @@
 package rules
 dialect "java"
 
-rule "rule1"
+import com.baltan.drools.pojo.User
 
+rule "rule1"
 when
-    $d:Double($d == 0)
+    // 变量名:变量类型(匹配规则)
+    // $d:Double(this == 0)
+    $d : Double($d == 0)
 then
-    System.out.println("***********" + $d+"***********");
+    System.out.println("***********" + $d + "***********");
+end
+
+rule "rule2"
+when
+    $u : User($u.name == "Baltan" && $u.age == 30)
+then
+    System.out.println("***********" + $u + "***********");
+end
+
+// 数组中索引为1处的元素是否是"sleeping"
+rule "rule3"
+when
+    $u : User(hobbies != null && hobbies[1] == "sleeping")
+then
+    System.out.println("***********" + $u + "***********");
+end
+
+// tags中"终生代号"这个key对应的值是否是9527
+rule "rule4"
+when
+    // $u:User(tags.get("终生代号") == 9527)
+    $u : User(tags != null && tags["终生代号"] == 9527)
+then
+    System.out.println("***********" + $u + "***********");
+end
+
+// "football"是否是数组hobbies中的元素
+rule "rule5"
+when
+    $u : User(hobbies != null && hobbies contains "football")
+then
+    System.out.println("***********" + $u + "***********");
+end
+
+// "table tennis"是否是数组hobbies中的元素
+rule "rule6"
+when
+    $u : User(hobbies != null && "table tennis" memberOf $u.hobbies)
+then
+    System.out.println("***********" + $u + "***********");
+end
+
+// 正则匹配
+rule "rule7"
+when
+    $u : User(name matches "Zh\\w+\\s{1}S\\w+")
+then
+    System.out.println("***********" + $u + "***********");
+end
+
+// 遍历数组
+rule "rule8"
+when
+    $u : User();
+    $s : String($s == "coding" || $s == "sleeping") from $u.hobbies
+then
+    System.out.println("***********" + $u + "***********");
 end
