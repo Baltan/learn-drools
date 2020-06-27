@@ -1,5 +1,6 @@
 package com.baltan.drools;
 
+import com.baltan.drools.pojo.Loser;
 import com.baltan.drools.pojo.Lover;
 import com.baltan.drools.pojo.User;
 import com.drools.core.KieTemplate;
@@ -94,6 +95,18 @@ class LearnDroolsApplicationTests {
         session.getAgenda().getAgendaGroup("group3").setFocus();
         Lover lover = new Lover();
         obj = lover;
+    }
+
+    @Test
+    public void test11() {
+        Loser loser = new Loser("A");
+        obj = loser;
+    }
+
+    @Test
+    public void test12() {
+        Loser loser = new Loser("B");
+        obj = loser;
     }
 
     @AfterEach
