@@ -196,7 +196,7 @@ when
 then
     System.out.println("***********loser-1***********");
     // delete($l);
-    // delete()方法也能执行删除对象的操作，但是IDEA不会讲方法名加粗
+    // delete()方法也能执行删除对象的操作，但是IDEA不会将方法名加粗
     retract($l)
 end
 
