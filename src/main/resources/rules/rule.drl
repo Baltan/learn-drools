@@ -2,6 +2,7 @@ package rules
 dialect "java"
 
 import com.baltan.drools.pojo.User
+import com.baltan.drools.pojo.Lover
 
 rule "rule1"
 when
@@ -67,4 +68,29 @@ when
     $s : String($s == "coding" || $s == "sleeping") from $u.hobbies
 then
     System.out.println("***********" + $u + "***********");
+end
+
+// activation-group定义组别，同一组别中默认排在最前面的那条被满足的规则被执行
+rule "rule9"
+activation-group "group1"
+when
+    $l : Lover(false);
+then
+    System.out.println("***********" + 1 + "***********");
+end
+
+rule "rule10"
+activation-group "group1"
+when
+    $l : Lover();
+then
+    System.out.println("***********" + 2 + "***********");
+end
+
+rule "rule11"
+activation-group "group1"
+when
+    $l : Lover();
+then
+    System.out.println("***********" + 3 + "***********");
 end

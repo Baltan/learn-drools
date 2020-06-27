@@ -83,6 +83,12 @@ class LearnDroolsApplicationTests {
         obj = user;
     }
 
+    @Test
+    public void test9() {
+        Lover lover = new Lover();
+        obj = lover;
+    }
+
     @AfterEach
     public void after() {
         session.insert(obj);
