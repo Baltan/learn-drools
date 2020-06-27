@@ -123,9 +123,17 @@ then
     System.out.println("***********" + 3 + "***********");
 end
 
-// agenda-group组别中的规则需要被显式激活才会被判断
+// agenda-group组别中的规则需要被显式激活才会被判断，并且组别中所有被满足的规则都会被执行
 // session.getAgenda().getAgendaGroup("group3").setFocus();
 rule "rule15"
+agenda-group "group3"
+when
+    $l : Lover();
+then
+    System.out.println("***********" + $l + "***********");
+end
+
+rule "rule16"
 agenda-group "group3"
 when
     $l : Lover();
