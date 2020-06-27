@@ -183,7 +183,7 @@ class LearnDroolsApplicationTests {
     }
 
     /**
-     * rule24
+     * rule24、rule25
      */
     @Test
     public void test17() {

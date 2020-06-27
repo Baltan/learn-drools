@@ -209,10 +209,21 @@ then
     System.out.println("***********loser-2***********");
 end
 
+// kcontext上下文对象操作
 rule "rule24"
 when
     $c : Context();
 then
     KieRuntime kr =  kcontext.getKieRuntime();
     System.out.println("***********" + kr + "***********");
+    // 激活指定的规则
+    kr.getAgenda().getAgendaGroup("group4").setFocus();
+end
+
+rule "rule25"
+agenda-group "group4"
+when
+    $c : Context();
+then
+    System.out.println("***********group4-1***********");
 end
