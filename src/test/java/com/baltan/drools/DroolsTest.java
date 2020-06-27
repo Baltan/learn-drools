@@ -19,7 +19,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.math.BigDecimal;
 
 /**
- * Description:
+ * Description: 引用：
+ * <a href="https://www.yiibai.com/drools/drools_sample_drools_program.html#article-start"></a>
  *
  * @author Baltan
  * @date 2020-06-27 21:40
