@@ -188,3 +188,21 @@ when
 then
     System.out.println("***********" + $l + "***********");
 end
+
+// retract()方法将内存中的对象删除
+rule "rule22"
+when
+    $l : Loser(name == "F");
+then
+    System.out.println("***********loser-1***********");
+    // delete($l);
+    // delete()方法也能执行删除对象的操作，但是IDEA不会讲方法名加粗
+    retract($l)
+end
+
+rule "rule23"
+when
+    $l : Loser(name == "F");
+then
+    System.out.println("***********loser-2***********");
+end
