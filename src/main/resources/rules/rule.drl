@@ -172,3 +172,19 @@ then
     System.out.println("***********" + $l + "***********");
     update($l);
 end
+
+// 执行插入对象的操作后，所有的规则都会再被判断一遍
+rule "rule20"
+when
+    $l : Loser(name == "D");
+then
+    System.out.println("***********" + $l + "***********");
+    insert(new Loser("E"));
+end
+
+rule "rule21"
+when
+    $l : Loser(name == "E");
+then
+    System.out.println("***********" + $l + "***********");
+end
