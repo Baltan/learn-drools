@@ -143,7 +143,7 @@ then
     System.out.println("***********" + $l + "***********");
 end
 
-// no-loop属性配置为true后，可以避免当前规则在执行update()后被反复循环判断
+// no-loop属性配置为true后，可以避免当前规则在执行update()后被反复循环判断执行
 rule "rule17"
 no-loop true
 when
@@ -151,20 +151,4 @@ when
 then
     System.out.println("***********" + $l + "***********");
     update($l);
-end
-
-rule "rule18"
-when
-    $l : Loser(name == "B");
-then
-    System.out.println("***********" + $l + "***********");
-    $l.setName("C");
-    update($l);
-end
-
-rule "rule19"
-when
-    $l : Loser(name == "C");
-then
-    System.out.println("***********" + $l + "***********");
 end
