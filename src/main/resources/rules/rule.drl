@@ -254,3 +254,29 @@ when
 then
     System.out.println("***********random-3***********");
 end
+
+// 系统时间到达date-effective配置的时间，规则才可能被执行
+// date-expires默认格式为dd-MMM-yyyy
+rule "rule29"
+date-expires "27-Jun-2020"
+when
+    $r : Random();
+then
+    System.out.println("***********random-4***********");
+end
+
+rule "rule30"
+date-expires "28-Jun-2020"
+when
+    $r : Random();
+then
+    System.out.println("***********random-5***********");
+end
+
+rule "rule31"
+date-expires "29-Jun-2020"
+when
+    $r : Random();
+then
+    System.out.println("***********random-6***********");
+end
