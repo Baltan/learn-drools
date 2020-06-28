@@ -8,6 +8,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.kie.api.runtime.KieSession;
+import org.kie.api.runtime.rule.QueryResults;
+import org.kie.api.runtime.rule.QueryResultsRow;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -234,6 +236,39 @@ class LearnDroolsApplicationTests {
     public void test22() {
         Loser loser = new Loser("I");
         obj = loser;
+    }
+
+    /**
+     * query1
+     */
+    @Test
+    public void test23() {
+        session.insert(new Query("query1"));
+        session.insert(new Query("query2"));
+        session.insert(new Query("query3"));
+
+        QueryResults queryResults = session.getQueryResults("query1");
+
+        for (QueryResultsRow row : queryResults) {
+            System.out.println(row.get("$q"));
+        }
+    }
+
+    /**
+     * query2
+     */
+    @Test
+    public void test24() {
+        session.insert(new Query("query4"));
+        session.insert(new Query("query5"));
+        session.insert(new Query("query6"));
+
+        QueryResults queryResults =
+                session.getQueryResults("query2", new Object[]{new String[]{"query5", "query6"}});
+
+        for (QueryResultsRow row : queryResults) {
+            System.out.println(row.get("$q"));
+        }
     }
 
     @AfterEach

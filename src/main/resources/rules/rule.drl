@@ -6,6 +6,7 @@ import com.baltan.drools.pojo.Lover
 import com.baltan.drools.pojo.Loser
 import com.baltan.drools.pojo.Context
 import com.baltan.drools.pojo.Random
+import com.baltan.drools.pojo.Query
 import org.kie.api.runtime.KieRuntime
 
 rule "rule1"
@@ -330,3 +331,11 @@ end
 function void say(String ruleName) {
     System.out.println("Well done, " + ruleName + " is executed!");
 }
+
+query "query1"
+    $q : Query(name matches "query\\d+")
+end
+
+query "query2"(String[] $names)
+    $q : Query(name memberOf $names)
+end
