@@ -8,6 +8,7 @@ import org.drools.core.impl.KnowledgeBaseFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.kie.api.io.ResourceType;
+import org.kie.api.runtime.StatelessKieSession;
 import org.kie.internal.builder.KnowledgeBuilder;
 import org.kie.internal.builder.KnowledgeBuilderErrors;
 import org.kie.internal.builder.KnowledgeBuilderFactory;
@@ -17,6 +18,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -76,6 +79,51 @@ public class DroolsTest {
             if (Objects.nonNull(session)) {
                 session.dispose();
             }
+        }
+    }
+
+    @Test
+    public void test2() {
+        try {
+            InternalKnowledgeBase base = readKnowledgeBase();
+            /**
+             * 获取无状态的知识会话
+             */
+            StatelessKieSession session = base.newStatelessKieSession();
+
+            ItemCity itemCity1 = new ItemCity();
+            itemCity1.setPurchaseCity(City.PUNE);
+            itemCity1.setTypeofItem(Type.MEDICINES);
+            itemCity1.setSellPrice(new BigDecimal(10));
+
+            ItemCity itemCity2 = new ItemCity();
+            itemCity2.setPurchaseCity(City.PUNE);
+            itemCity2.setTypeofItem(Type.GROCERIES);
+            itemCity2.setSellPrice(new BigDecimal(10));
+
+            ItemCity itemCity3 = new ItemCity();
+            itemCity3.setPurchaseCity(City.NAGPUR);
+            itemCity3.setTypeofItem(Type.MEDICINES);
+            itemCity3.setSellPrice(new BigDecimal(10));
+
+            ItemCity itemCity4 = new ItemCity();
+            itemCity4.setPurchaseCity(City.NAGPUR);
+            itemCity4.setTypeofItem(Type.GROCERIES);
+            itemCity4.setSellPrice(new BigDecimal(10));
+
+            List<ItemCity> itemCityList = Arrays.asList(itemCity1, itemCity2, itemCity3, itemCity4);
+            /**
+             * 如果要传入规则包的Fact就是itemCityList，而不是itemCityList内部的元素，则如下实现：
+             * session.execute(CommandFactory.newInsert(itemCityList));
+             */
+            session.execute(itemCityList);
+
+            System.out.println(itemCity1);
+            System.out.println(itemCity2);
+            System.out.println(itemCity3);
+            System.out.println(itemCity4);
+        } catch (Throwable t) {
+            t.printStackTrace();
         }
     }
 
