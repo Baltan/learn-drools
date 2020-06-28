@@ -227,6 +227,15 @@ class LearnDroolsApplicationTests {
         session.fireAllRules(new RuleNameSuffixAgendaFilter("6"));
     }
 
+    /**
+     * rule37
+     */
+    @Test
+    public void test22() {
+        Loser loser = new Loser("I");
+        obj = loser;
+    }
+
     @AfterEach
     public void after() {
         session.insert(obj);

@@ -318,3 +318,15 @@ when
 then
     System.out.println("***********rule36***********");
 end
+
+rule "rule37"
+when
+    $l : Loser(name == "I")
+then
+    say(drools.getRule().getName());
+end
+
+// 函数可以在每个规则的RHS被调用
+function void say(String ruleName) {
+    System.out.println("Well done, " + ruleName + " is executed!");
+}
