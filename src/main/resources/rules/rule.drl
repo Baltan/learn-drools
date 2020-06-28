@@ -5,6 +5,7 @@ import com.baltan.drools.pojo.User
 import com.baltan.drools.pojo.Lover
 import com.baltan.drools.pojo.Loser
 import com.baltan.drools.pojo.Context
+import com.baltan.drools.pojo.Random
 import org.kie.api.runtime.KieRuntime
 
 rule "rule1"
@@ -225,4 +226,31 @@ when
     $c : Context();
 then
     System.out.println("***********group4-1***********");
+end
+
+// 系统时间到达date-effective配置的时间，规则才可能被执行
+// date-effective默认格式为dd-MMM-yyyy，如果需要修改时间格式，可以在向KnowledgeBuilder里添加规则文件之前执行：
+// System.setProperty("drools.dateformat", "yyyy-MM-dd");
+rule "rule26"
+date-effective "27-Jun-2020"
+when
+    $r : Random();
+then
+    System.out.println("***********random-1***********");
+end
+
+rule "rule27"
+date-effective "28-Jun-2020"
+when
+    $r : Random();
+then
+    System.out.println("***********random-2***********");
+end
+
+rule "rule28"
+date-effective "29-Jun-2020"
+when
+    $r : Random();
+then
+    System.out.println("***********random-3***********");
 end

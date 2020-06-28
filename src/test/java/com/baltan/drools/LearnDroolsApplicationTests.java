@@ -1,9 +1,6 @@
 package com.baltan.drools;
 
-import com.baltan.drools.pojo.Context;
-import com.baltan.drools.pojo.Loser;
-import com.baltan.drools.pojo.Lover;
-import com.baltan.drools.pojo.User;
+import com.baltan.drools.pojo.*;
 import com.drools.core.KieTemplate;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -189,6 +186,15 @@ class LearnDroolsApplicationTests {
     public void test17() {
         Context context = new Context();
         obj = context;
+    }
+
+    /**
+     * rule26、rule27、rule28
+     */
+    @Test
+    public void test18() {
+        Random random = new Random();
+        obj = random;
     }
 
     @AfterEach
