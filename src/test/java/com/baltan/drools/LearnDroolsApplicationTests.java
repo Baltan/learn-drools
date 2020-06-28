@@ -223,6 +223,9 @@ class LearnDroolsApplicationTests {
      */
     @Test
     public void test21() {
+        Loser loser = new Loser("Z");
+        obj = loser;
+        session.insert(obj);
         /**
          * 通过实现AgendaFilter接口重写其accept()方法实现根据规则的某些属性值来控制规则是否执行
          */

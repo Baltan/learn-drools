@@ -304,18 +304,21 @@ end
 
 rule "rule34"
 when
+    $l : Loser(name == "Z")
 then
     System.out.println("***********rule34***********");
 end
 
 rule "rule35"
 when
+    $l : Loser(name == "Z")
 then
     System.out.println("***********rule35***********");
 end
 
 rule "rule36"
 when
+    $l : Loser(name == "Z")
 then
     System.out.println("***********rule36***********");
 end
