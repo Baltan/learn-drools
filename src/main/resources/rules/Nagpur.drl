@@ -5,6 +5,7 @@ import com.baltan.drools.pojo.ItemCity;
 import com.baltan.drools.constant.City;
 import com.baltan.drools.constant.Type;
 import java.math.BigDecimal;
+import com.baltan.drools.util.DroolsUtil;
 
 rule "Nagpur Medicine Item"
 when
@@ -12,6 +13,7 @@ when
 then
     BigDecimal tax = new BigDecimal(0.0);
     item.setLocalTax(tax.multiply(item.getSellPrice()));
+    DroolsUtil.helper(drools);
 end
 
 rule "Nagpur Groceries Item"
@@ -20,4 +22,5 @@ when
 then
     BigDecimal tax = new BigDecimal(1.0);
     item.setLocalTax(tax.multiply(item.getSellPrice()));
+    DroolsUtil.helper(drools);
 end
