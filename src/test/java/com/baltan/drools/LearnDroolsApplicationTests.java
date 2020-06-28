@@ -1,5 +1,6 @@
 package com.baltan.drools;
 
+import com.baltan.drools.filter.RuleNameSuffixAgendaFilter;
 import com.baltan.drools.pojo.*;
 import com.drools.core.KieTemplate;
 import org.junit.jupiter.api.AfterEach;
@@ -213,6 +214,17 @@ class LearnDroolsApplicationTests {
     public void test20() {
         Loser loser = new Loser("H");
         obj = loser;
+    }
+
+    /**
+     * rule34、rule35、rule36
+     */
+    @Test
+    public void test21() {
+        /**
+         * 通过实现AgendaFilter接口重写其accept()方法实现根据规则的某些属性值来控制规则是否执行
+         */
+        session.fireAllRules(new RuleNameSuffixAgendaFilter("6"));
     }
 
     @AfterEach

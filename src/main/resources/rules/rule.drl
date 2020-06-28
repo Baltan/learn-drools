@@ -300,3 +300,21 @@ when
 then
     System.out.println("***********" + $l + "***********");
 end
+
+rule "rule34"
+when
+then
+    System.out.println("***********rule34***********");
+end
+
+rule "rule35"
+when
+then
+    System.out.println("***********rule35***********");
+end
+
+rule "rule36"
+when
+then
+    System.out.println("***********rule36***********");
+end
