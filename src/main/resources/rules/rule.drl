@@ -330,6 +330,15 @@ then
     say(drools.getRule().getName());
 end
 
+rule "rule38"
+when
+    $l : Loser(name == "J")
+then
+    Person p = new Person();
+    p.setLoser($l);
+    System.out.println(p);
+end
+
 // 函数可以在每个规则的RHS被调用
 function void say(String ruleName) {
     System.out.println("Well done, " + ruleName + " is executed!");
@@ -341,4 +350,11 @@ end
 
 query "query2"(String[] $names)
     $q : Query(name memberOf $names)
+end
+
+// 定义一个Fact对象
+declare Person
+    loser : Loser
+    lover : Lover
+    user : User
 end
