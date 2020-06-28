@@ -30,12 +30,14 @@ import java.math.BigDecimal;
 public class DroolsTest {
     @Test
     public void test1() {
+        StatefulKnowledgeSession session = null;
+
         try {
             InternalKnowledgeBase base = readKnowledgeBase();
             /**
              * 获取有状态的知识会话
              */
-            StatefulKnowledgeSession session = (StatefulKnowledgeSession) base.newKieSession();
+            session = (StatefulKnowledgeSession) base.newKieSession();
 
             ItemCity itemCity1 = new ItemCity();
             itemCity1.setPurchaseCity(City.PUNE);
@@ -69,6 +71,8 @@ public class DroolsTest {
             System.out.println(itemCity4);
         } catch (Throwable t) {
             t.printStackTrace();
+        } finally {
+            session.dispose();
         }
     }
 
