@@ -280,3 +280,13 @@ when
 then
     System.out.println("***********random-6***********");
 end
+
+// duration属性配置的毫秒数过后，规则会在另一个线程中被触发
+rule "rule32"
+duration 3000
+when
+    $l : Loser(name == "G")
+then
+    System.out.println("***********" + $l + "***********");
+    System.out.println("thread id: " + Thread.currentThread().getId());
+end
