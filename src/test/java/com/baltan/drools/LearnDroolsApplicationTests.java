@@ -206,6 +206,15 @@ class LearnDroolsApplicationTests {
         obj = loser;
     }
 
+    /**
+     * rule33
+     */
+    @Test
+    public void test20() {
+        Loser loser = new Loser("H");
+        obj = loser;
+    }
+
     @AfterEach
     public void after() {
         session.insert(obj);

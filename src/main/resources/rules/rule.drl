@@ -290,3 +290,13 @@ then
     System.out.println("***********" + $l + "***********");
     System.out.println("thread id: " + Thread.currentThread().getId());
 end
+
+// auto-focus属性配置为true的规则，即使配置了agenda-group属性，不需要显式激活也会被判断（见"rule15"）
+rule "rule33"
+agenda-group "group5"
+auto-focus true
+when
+    $l : Loser(name == "H")
+then
+    System.out.println("***********" + $l + "***********");
+end
